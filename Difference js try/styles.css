@@ -1,0 +1,97 @@
+body{
+  background: #ced8c7;
+  font-family: sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.heading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0px auto 40px auto;
+}
+
+.classic-button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: white;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-right: 6px;
+}
+
+.game-table-container {
+  width: 80%;
+}
+
+table {
+  width: 100%;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input {
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  padding: 8px 8px 8px 8px;
+  text-align: center;
+  width: 84%;
+  margin: auto;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
+tfoot {
+  font-weight: bold;
+}
+
+.player-result-cell {
+  font-size: 1.2rem;
+}
+
+.pay-amount-cell {
+  font-size: 2rem;
+}
+
+tfoot > tr {
+  height: 30px;
+}
+
+th {
+  height: 30px;
+}
+
+.row-label {
+  min-width: 60px;
+  font-weight: bold;
+  text-align: right !important;
+  padding-right: 10px;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;900&display=swap" rel="stylesheet">
+    <title>Score Sheet</title>
+  </head>
+
+  <body>
+    <div class="heading-container">
+      <h1>Score Sheet</h1>
+      <div class="button-container">
+        <button class="classic-button" id="cal-btn">Calculate</button>
+        <button class="classic-button" id="reset-btn">Reset</button>
+      </div>
+
+    </div>
+    <div class="game-table-container" id="game-table-div">
+      <table id="game-table">
+        <tr>
+          <th></th>
+          <th>Player 1</th>
+          <th>Player 2</th>
+          <th>Player 3</th>
+        </tr>
+        <tr>
+          <td class="row-label">1</td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+        </tr>
+        <tr>
+          <td class="row-label">2</td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+        </tr>
+        <tr>
+          <td class="row-label">3</td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+        </tr>
+        <tr>
+          <td class="row-label">4</td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+        </tr>
+        <tr>
+          <td class="row-label">5</td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+        </tr>
+        <tr>
+          <td class="row-label">6</td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+          <td><input type="number" name="" value="0"></td>
+        </tr>
+        <tfoot>
+          <tr id="player-result-row"></tr>
+          <tr id="pay-amount-row"></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <script src="./gametable.js" charset="utf-8" type="module"></script>
+    <script src="./difference_try01.js" charset="utf-8" type="module"></script>
+  </body>
+</html>
