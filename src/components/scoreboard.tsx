@@ -19,7 +19,7 @@ import { Button } from '@/components/ui/button'
 
 const scoreboard = () => {
 
-    let scoretable: any = React.useRef();
+    let scoretable: any = React.useRef(0);
     const [results, setResults] = React.useState(Array(3).fill(0))
     const [payAmount, setPayAmount] = React.useState(Array(3).fill(0))
     
@@ -88,7 +88,10 @@ const scoreboard = () => {
         return newArr
     }
 
-  
+    // //generate table
+
+    let tableArray2D = Array(8).fill(0)
+    let colArr = Array(3).fill(0)
 
 
     return (
@@ -103,7 +106,19 @@ const scoreboard = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow>
+                    {
+
+                        tableArray2D.map( row => {
+                            return <TableRow key={"Row"+row}>
+                                    {
+                                        colArr.map(col => {
+                                            return <TableCell><Input key={"Col"+col} type="number" placeholder="0" defaultValue="0"/></TableCell>
+                                        })
+                                    }
+                                </TableRow>
+                        })
+                    }
+                    {/* <TableRow>
                         <TableCell><Input className='border-transparent focus:border-transparent focus:ring-0' type="number" defaultValue="0"/></TableCell>
                         <TableCell><Input type="number" placeholder="0" defaultValue="0"/></TableCell>
                         <TableCell><Input type="number" placeholder="0" defaultValue="0"/></TableCell>
@@ -132,17 +147,17 @@ const scoreboard = () => {
                         <TableCell><Input type="number" placeholder="0" defaultValue="0"/></TableCell>
                         <TableCell><Input type="number" placeholder="0" defaultValue="0"/></TableCell>
                         <TableCell><Input type="number" placeholder="0" defaultValue="0"/></TableCell>
-                    </TableRow>
+                    </TableRow> */}
                 </TableBody>
                 <TableFooter className='font-bold'>
                     <TableRow>
                         { results.map( (result, i) => {
-                            return <TableCell key={i}> {result} </TableCell>
+                            return <TableCell key={"Result"+i}> {result} </TableCell>
                         })}
                     </TableRow>
                     <TableRow>
                         { payAmount.map( (ele, j) => {
-                            return <TableCell key={j}> ${ele} </TableCell>
+                            return <TableCell key={"Payment"+j}> ${ele} </TableCell>
                         })}
                     </TableRow>
                 </TableFooter>
