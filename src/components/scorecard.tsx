@@ -1,5 +1,5 @@
 import React from "react";
-import Scoreboard from "./scoreboard";
+import Scoreboard from "./Scoreboard";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -11,7 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const scorecard = () => {
+const Scorecard = (props: { noOfPlayers: number }) => {
+  console.log(props.noOfPlayers);
   return (
     <Card>
       <CardHeader>
@@ -19,11 +20,11 @@ const scorecard = () => {
         <CardDescription>Rummikub Score Card</CardDescription>
       </CardHeader>
       <CardContent>
-        <Scoreboard />
+        <Scoreboard noOfPlayers={props.noOfPlayers} />
       </CardContent>
       <CardFooter></CardFooter>
     </Card>
   );
 };
 
-export default scorecard;
+export default Scorecard;

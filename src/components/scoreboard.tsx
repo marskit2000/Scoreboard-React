@@ -1,4 +1,4 @@
-import React, { LegacyRef } from "react";
+import React, { LegacyRef, useEffect } from "react";
 
 import {
   Table,
@@ -16,13 +16,27 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 const noOFGames = 6;
-const noOfPlayers = 4;
+// const noOfPlayers = 4;
 
-const scoreboard = () => {
+const Scoreboard = (props: { noOfPlayers: number }) => {
   let scoretable: any = React.useRef(0);
-  const [results, setResults] = React.useState(Array(noOfPlayers).fill(0));
-  const [payAmount, setPayAmount] = React.useState(Array(noOfPlayers).fill(0));
+  const [results, setResults] = React.useState(
+    Array(props.noOfPlayers).fill(0)
+  );
+  const [payAmount, setPayAmount] = React.useState(
+    Array(props.noOfPlayers).fill(0)
+  );
   const [moneyPerPoint, setMoneyPerPoint] = React.useState(1);
+  const [players, setPlayers] = React.useState<string[]>([]);
+
+  //Initialise Player Names
+  React.useEffect(() => {
+    let tempArr: string[] = [];
+    for (let i = 0; i < props.noOfPlayers; i++) {
+      tempArr.push(`Player ${i + 1}`);
+    }
+    setPlayers(tempArr);
+  }, []);
 
   // console.log(scoretable.current.rows[1].cells[1].childNodes[0].value)
 
@@ -43,8 +57,8 @@ const scoreboard = () => {
   //reset
 
   const handleReset = () => {
-    setResults(Array(noOfPlayers).fill(0));
-    setPayAmount(Array(noOfPlayers).fill(0));
+    setResults(Array(props.noOfPlayers).fill(0));
+    setPayAmount(Array(props.noOfPlayers).fill(0));
 
     for (let i = 1; i < scoretable.current.rows.length - 2; i++) {
       for (let j = 0; j < scoretable.current.rows[i].cells.length; j++) {
@@ -56,7 +70,7 @@ const scoreboard = () => {
   //helper functions
 
   function calculatePlayerTotal() {
-    let totalArray = Array(noOfPlayers).fill(0);
+    let totalArray = Array(props.noOfPlayers).fill(0);
 
     for (let i = 1; i < scoretable.current.rows.length - 2; i++) {
       for (let j = 0; j < scoretable.current.rows[i].cells.length; j++) {
@@ -98,7 +112,7 @@ const scoreboard = () => {
     tableArray2D.push(i);
   }
   let colArr: number[] = [];
-  for (let i = 0; i < noOfPlayers; i++) {
+  for (let i = 0; i < props.noOfPlayers; i++) {
     colArr.push(i);
   }
 
@@ -113,13 +127,21 @@ const scoreboard = () => {
         {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
         <TableHeader>
           <TableRow className="bg-black rounded-md focus:bg-black focus:text-white">
-            {colArr.map((col) => {
+            {players.map((player) => {
+              return (
+                <TableHead className="text-center font-bold text-white">
+                  {player}
+                </TableHead>
+              );
+            })}
+
+            {/* {colArr.map((col) => {
               return (
                 <TableHead className="text-center font-bold text-white">
                   Player {col + 1}
                 </TableHead>
               );
-            })}
+            })} */}
             {/* 
                         <TableHead className="text-center font-bold text-white rounded-tl-md">Player 1</TableHead>
                         <TableHead className="text-center font-bold text-white">Player 2</TableHead>
@@ -216,4 +238,4 @@ const scoreboard = () => {
   );
 };
 
-export default scoreboard;
+export default Scoreboard;

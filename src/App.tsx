@@ -1,16 +1,17 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
-import Scorecard from './components/scorecard'
+import Scorecard from "./components/Scorecard";
+import Playername from "./components/Playername";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [noOfPlayers, setNoOfPlayers] = useState<number>(3);
   return (
     <>
-      <Scorecard />
+      <Playername noOfPlayers={noOfPlayers} />
+      <Scorecard noOfPlayers={noOfPlayers} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
