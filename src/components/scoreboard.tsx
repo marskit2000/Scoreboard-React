@@ -16,12 +16,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 const noOFGames = 6;
-const noOfPlayers = 5;
+const noOfPlayers = 4;
 
 const scoreboard = () => {
   let scoretable: any = React.useRef(0);
   const [results, setResults] = React.useState(Array(noOfPlayers).fill(0));
   const [payAmount, setPayAmount] = React.useState(Array(noOfPlayers).fill(0));
+  const [moneyPerPoint, setMoneyPerPoint] = React.useState(1);
 
   // console.log(scoretable.current.rows[1].cells[1].childNodes[0].value)
 
@@ -31,7 +32,13 @@ const scoreboard = () => {
     setResults(calculatePlayerTotal());
   };
 
-  React.useEffect(() => setPayAmount(findAllDifferences(results)), [results]);
+  React.useEffect(
+    () =>
+      setPayAmount(
+        findAllDifferences(results).map((pay) => pay * moneyPerPoint)
+      ),
+    [results, moneyPerPoint]
+  );
 
   //reset
 
@@ -132,6 +139,7 @@ const scoreboard = () => {
                         type="number"
                         placeholder="0"
                         defaultValue="0"
+                        className="text-center border-transparent focus:border-transparent focus:ring-0"
                       />
                     </TableCell>
                   );
@@ -190,6 +198,18 @@ const scoreboard = () => {
         <Button variant="outline" onClick={handleAddRow}>
           Add Game
         </Button>
+        <div className="flex">
+          $
+          <Input
+            className="w-1/2"
+            type="number"
+            defaultValue={moneyPerPoint}
+            step="0.5"
+            onChange={(e) => {
+              setMoneyPerPoint(Number(e.target.value));
+            }}
+          />
+        </div>
         <Button onClick={handleReset}>Reset</Button>
       </div>
     </div>
