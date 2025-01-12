@@ -1,4 +1,4 @@
-#This is a scoreboard app developed for our family rummikub and card games.
+# This is a scoreboard app developed for our family rummikub and card games.
 
 <!-- # React + TypeScript + Vite
 
