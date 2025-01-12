@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const Scorecard = (props: { noOfPlayers: number }) => {
+const Scorecard = (props: any) => {
   console.log(props.noOfPlayers);
   return (
     <Card>
@@ -20,7 +20,7 @@ const Scorecard = (props: { noOfPlayers: number }) => {
         <CardDescription>Rummikub Score Card</CardDescription>
       </CardHeader>
       <CardContent>
-        <Scoreboard noOfPlayers={props.noOfPlayers} />
+        <Scoreboard noOfPlayers={props.noOfPlayers} players={props.players} />
       </CardContent>
       <CardFooter></CardFooter>
     </Card>

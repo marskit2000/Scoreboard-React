@@ -11,15 +11,15 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
 const Playername = (props: any) => {
-  const [players, setPlayers] = React.useState<string[]>([]);
-  //Initialise Player Names
-  React.useEffect(() => {
-    let tempArr: string[] = [];
-    for (let i = 0; i < props.noOfPlayers; i++) {
-      tempArr.push(`Player ${i + 1}`);
-    }
-    setPlayers(tempArr);
-  }, []);
+  // const [players, setPlayers] = React.useState<string[]>([]);
+  // //Initialise Player Names
+  // React.useEffect(() => {
+  //   let tempArr: string[] = [];
+  //   for (let i = 0; i < props.noOfPlayers; i++) {
+  //     tempArr.push(`Player ${i + 1}`);
+  //   }
+  //   setPlayers(tempArr);
+  // }, []);
 
   return (
     <Card className="mb-4">
@@ -28,7 +28,7 @@ const Playername = (props: any) => {
         <CardDescription>Please enter your name</CardDescription>
       </CardHeader>
       <CardContent>
-        {players.map((player, i) => {
+        {props.players.map((player: string, i: number) => {
           return (
             <div key={i} className="flex items-center gap-2 mb-2">
               <Label className="font-bold" htmlFor={`Player ${i}`}>
@@ -39,12 +39,8 @@ const Playername = (props: any) => {
                 type="string"
                 placeholder="Enter your name"
                 onChange={(e) => {
-                  setPlayers((prevArr) => {
-                    const result = [...prevArr];
-                    result[i] = e.target.value;
-                    return result;
-                  });
-                  console.log(players);
+                  props.changePlayersName(e.target.value, i);
+                  console.log(props.players);
                 }}
               />
             </div>

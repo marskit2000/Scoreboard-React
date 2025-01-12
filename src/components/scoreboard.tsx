@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 const noOFGames = 6;
 // const noOfPlayers = 4;
 
-const Scoreboard = (props: { noOfPlayers: number }) => {
+const Scoreboard = (props: any) => {
   let scoretable: any = React.useRef(0);
   const [results, setResults] = React.useState(
     Array(props.noOfPlayers).fill(0)
@@ -27,16 +27,18 @@ const Scoreboard = (props: { noOfPlayers: number }) => {
     Array(props.noOfPlayers).fill(0)
   );
   const [moneyPerPoint, setMoneyPerPoint] = React.useState(1);
-  const [players, setPlayers] = React.useState<string[]>([]);
 
-  //Initialise Player Names
-  React.useEffect(() => {
-    let tempArr: string[] = [];
-    for (let i = 0; i < props.noOfPlayers; i++) {
-      tempArr.push(`Player ${i + 1}`);
-    }
-    setPlayers(tempArr);
-  }, []);
+  //Move up to App
+  // const [players, setPlayers] = React.useState<string[]>([]);
+
+  // //Initialise Player Names
+  // React.useEffect(() => {
+  //   let tempArr: string[] = [];
+  //   for (let i = 0; i < props.noOfPlayers; i++) {
+  //     tempArr.push(`Player ${i + 1}`);
+  //   }
+  //   setPlayers(tempArr);
+  // }, []);
 
   // console.log(scoretable.current.rows[1].cells[1].childNodes[0].value)
 
@@ -127,7 +129,7 @@ const Scoreboard = (props: { noOfPlayers: number }) => {
         {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
         <TableHeader>
           <TableRow className="bg-black rounded-md focus:bg-black focus:text-white">
-            {players.map((player) => {
+            {props.players.map((player: string) => {
               return (
                 <TableHead className="text-center font-bold text-white">
                   {player}
@@ -217,7 +219,7 @@ const Scoreboard = (props: { noOfPlayers: number }) => {
         <Button variant="outline" onClick={handleClick}>
           Calculate
         </Button>
-        <Button variant="outline" onClick={handleAddRow}>
+        <Button className="hidden" variant="outline" onClick={handleAddRow}>
           Add Game
         </Button>
         <div className="flex">
