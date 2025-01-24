@@ -19,6 +19,7 @@ const noOFGames = 6;
 // const noOfPlayers = 4;
 
 const Scoreboard = (props: any) => {
+  let totalArray: number[] = Array(props.noOfPlayers).fill(0)
   let scoretable: any = React.useRef(0);
   const [results, setResults] = React.useState(
     Array(props.noOfPlayers).fill(0)
@@ -27,6 +28,29 @@ const Scoreboard = (props: any) => {
     Array(props.noOfPlayers).fill(0)
   );
   const [moneyPerPoint, setMoneyPerPoint] = React.useState(1);
+
+  React.useEffect(() => {
+    // console.log(props.noOfPlayers)
+    setResults((prevArr) => {
+      let newArr = [...prevArr]
+      const increment: number = props.noOfPlayers - newArr.length
+      if(increment > 0) {
+        const newAttachArr = Array(increment).fill(0)
+        return newArr.concat(newAttachArr)
+      }
+      if(increment < 0) {
+        for(let i=0; i< Math.abs(increment); i++) {
+          newArr.pop()
+          console.log(newArr)
+          return newArr
+        }
+      }
+      return prevArr;
+    });
+
+    // console.log(results)
+
+  },[props.noOfPlayers])
 
   //Move up to App
   // const [players, setPlayers] = React.useState<string[]>([]);
@@ -45,14 +69,17 @@ const Scoreboard = (props: any) => {
   //calculate sum and amount
 
   const handleClick = () => {
-    setResults(calculatePlayerTotal());
+
+    const resultArr = calculatePlayerTotal()
+    console.log("PlayerTotal:")
+    console.log(resultArr)
+    setResults(resultArr);
   };
 
   React.useEffect(
-    () =>
-      setPayAmount(
-        findAllDifferences(results).map((pay) => pay * moneyPerPoint)
-      ),
+    () =>{
+      setPayAmount(findAllDifferences(results).map((pay) => pay * moneyPerPoint))
+    },
     [results, moneyPerPoint]
   );
 
@@ -72,7 +99,12 @@ const Scoreboard = (props: any) => {
   //helper functions
 
   function calculatePlayerTotal() {
-    let totalArray = Array(props.noOfPlayers).fill(0);
+    const num = props.noOfPlayers
+    let totalArray: number[] = new Array(num).fill(0, 0, num)
+    console.log("noOfPlayers")
+    console.log(props.noOfPlayers)
+    console.log("totalArray1")
+    console.log(totalArray)
 
     for (let i = 1; i < scoretable.current.rows.length - 2; i++) {
       for (let j = 0; j < scoretable.current.rows[i].cells.length; j++) {
@@ -81,6 +113,8 @@ const Scoreboard = (props: any) => {
         );
       }
     }
+    console.log("totalArray2")
+    console.log(totalArray)
 
     return totalArray;
   }

@@ -26,6 +26,10 @@ const Playername = (props: any) => {
       <CardHeader>
         <CardTitle className="text-lg uppercase">Players</CardTitle>
         <CardDescription>Please enter your name</CardDescription>
+        <Label className="font-bold" htmlFor="no-of-player">No. of Players</Label>
+        <Input type="number" defaultValue={props.noOfPlayers} id="no-of-player" className="text-center w-24 mx-auto" onChange={ e => {
+          props.changePlayersNumber(e.target.value)
+        }}/>
       </CardHeader>
       <CardContent>
         {props.players.map((player: string, i: number) => {

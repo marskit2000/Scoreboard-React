@@ -5,7 +5,7 @@ import Scorecard from "./components/Scorecard";
 import Playername from "./components/Playername";
 
 function App() {
-  const [noOfPlayers, setNoOfPlayers] = React.useState<number>(3);
+  const [noOfPlayers, setNoOfPlayers] = React.useState<number>(4);
   const [players, setPlayers] = React.useState<string[]>([]);
 
   //Initialise Player Names
@@ -15,7 +15,7 @@ function App() {
       tempArr.push(`Player ${i + 1}`);
     }
     setPlayers(tempArr);
-  }, []);
+  }, [noOfPlayers]);
 
   const changePlayersName = (newName: string, index: number) => {
     setPlayers((prevArr) => {
@@ -26,11 +26,16 @@ function App() {
     console.log(players);
   };
 
+  const changePlayersNumber = (num: number) => {
+    setNoOfPlayers(num)
+  }
+
   return (
     <>
       <Playername
         noOfPlayers={noOfPlayers}
         changePlayersName={changePlayersName}
+        changePlayersNumber={changePlayersNumber}
         players={players}
       />
       <Scorecard noOfPlayers={noOfPlayers} players={players} />
