@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { DatePicker } from "./DatePicker";
 
 const Playername = (props: any) => {
   // const [players, setPlayers] = React.useState<string[]>([]);
@@ -23,13 +24,26 @@ const Playername = (props: any) => {
 
   return (
     <Card className="mb-4">
-      <CardHeader>
+      <CardHeader className="relative">
+        <div className="absolute right-4">
+          <DatePicker />
+        </div>
         <CardTitle className="text-lg uppercase">Players</CardTitle>
-        <CardDescription>Please enter your name</CardDescription>
-        <Label className="font-bold" htmlFor="no-of-player">No. of Players</Label>
-        <Input type="number" defaultValue={props.noOfPlayers} id="no-of-player" className="text-center w-24 mx-auto" onChange={ e => {
-          props.changePlayersNumber(e.target.value)
-        }}/>
+        <div className="flex flex-col">
+          <CardDescription>Please enter your name</CardDescription>
+          <Label className="font-bold mt-2" htmlFor="no-of-player">
+            No. of Players
+          </Label>
+          <Input
+            type="number"
+            defaultValue={props.noOfPlayers}
+            id="no-of-player"
+            className="text-center w-24 mx-auto mt-2"
+            onChange={(e) => {
+              props.changePlayersNumber(e.target.value);
+            }}
+          />
+        </div>
       </CardHeader>
       <CardContent>
         {props.players.map((player: string, i: number) => {
