@@ -3,6 +3,7 @@ import "./App.css";
 
 import Scorecard from "./components/Scorecard";
 import Playername from "./components/Playername";
+import AdSenseSection from "./components/AdSenseSection";
 
 function App() {
   const [noOfPlayers, setNoOfPlayers] = React.useState<number>(3);
@@ -28,6 +29,8 @@ function App() {
 
   return (
     <>
+      {/* Google AdSense Section */}
+      <AdSenseSection />
       <Playername
         noOfPlayers={noOfPlayers}
         changePlayersName={changePlayersName}
