@@ -5,7 +5,7 @@ import Scorecard from "./components/Scorecard";
 import Playername from "./components/Playername";
 
 function App() {
-  const [noOfPlayers, setNoOfPlayers] = React.useState<number>(4);
+  const [noOfPlayers, setNoOfPlayers] = React.useState<number>(5);
   const [players, setPlayers] = React.useState<string[]>([]);
 
   //Initialise Player Names
@@ -27,8 +27,8 @@ function App() {
   };
 
   const changePlayersNumber = (num: number) => {
-    setNoOfPlayers(num)
-  }
+    setNoOfPlayers(num);
+  };
 
   return (
     <>
